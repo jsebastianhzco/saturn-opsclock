@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- css -->
+    <?php
+    include('../layout/head.php');
+    include('../layout/css.php');
+    ?>
+</head>
+
+<body>
+<div class="app-wrapper d-block">
+    <div class="">
+        <!-- Body main section starts -->
+        <main class="w-100 p-0">
+            <div class="container-fluid">
+                <!-- Create Password start -->
+                <div class="row">
+                    <div class="col-12 p-0">
+                        <div class="login-form-container">
+                            <div class="mb-4">
+                                <a class="logo d-inline-block" href="index.php">
+                                    <img alt="#" src="../assets/images/logo/1.png" width="250">
+                                </a>
+                            </div>
+                            <div class="form_container">
+                                <form class="app-form rounded-control">
+                                    <div class="mb-3 text-center">
+                                        <h3 class="text-primary-dark">Create Password</h3>
+                                        <p class="f-s-12 text-secondary">Your new password must be different from
+                                            previous used password</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Current password</label>
+                                        <input class="form-control" placeholder="Enter Your Password" type="email">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">New password</label>
+                                        <input class="form-control" placeholder="Enter Your Password" type="email">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Confirm Password</label>
+                                        <input class="form-control" placeholder="Enter Your Password" type="password">
+                                    </div>
+                                    <div>
+                                        <a class="btn btn-light-primary w-100" href="./index.php" role="button">Reset
+                                            Password</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Create Password end -->
+            </div>
+        </main>
+        <!-- Body main section ends -->
+    </div>
+</div>
+
+</body>
+
+<!-- Javascript -->
+
+<!-- latest jquery-->
+<script src="../assets/js/jquery-3.6.3.min.js"></script>
+
+<!-- Bootstrap js-->
+<script src="../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+</html>
