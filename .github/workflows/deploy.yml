@@ -17,6 +17,5 @@ jobs:
           server: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_PASSWORD }}
-          # Ruta en Hostinger donde está tu web
-          server-dir: ./public_html/worktrack/
+          server-dir: ./public_html/worktrack
           local-dir: ./
