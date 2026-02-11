@@ -1,4 +1,4 @@
-name: Production Deploy
+name: Deploy to Hostinger
 
 on:
   push:
@@ -11,17 +11,12 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Deploy to Hostinger via FTP
+      - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_PASSWORD }}
-          port: 21 # Hostinger usa el 21 para FTP normal o 22 para SFTP
+          # Ruta en Hostinger donde está tu web
+          server-dir: ./public_html/worktrack/
           local-dir: ./
-          server-dir: ./public_html/
-          # Aquí no se usa 'ignore', se usa 'exclude' en esta acción
-          exclude: |
-            **/.git*
-            **/.github*
-            **/node_modules/**
