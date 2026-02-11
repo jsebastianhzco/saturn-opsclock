@@ -1,40 +1,27 @@
-name: CI/CD Pipeline - Production Deploy
+name: Production Deploy
 
 on:
   push:
-    branches: [ main ] # Solo despliega cuando mergeas a main
+    branches: [ main ]
 
 jobs:
   deploy:
-    name: Build & Deploy
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Trae todo el historial para un deploy más inteligente
 
-      # Opcional: Aquí podrías añadir pasos de Linter para evitar errores de JS
-      # - name: Check JS Syntax
-      #   run: npx eslint ./js/shifts-realtime.js
-
-      - name: Deploy via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      - name: Deploy to Hostinger via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          username: ${{ secrets.REMOTE_USER }}
           server: ${{ secrets.REMOTE_HOST }}
-          port: ${{ secrets.REMOTE_PORT }}
+          username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_PASSWORD }}
-          # Carpeta local que quieres subir
-          local_path: './*'
-          # Carpeta remota en Hostinger (ajusta según tu estructura)
-          remote_path: '/home/u143480887/domains/jsebastianhz.com/public_html/worktrack'
-          # Archivos a ignorar (importante para no borrar logs en el servidor)
-          ignore: |
-            .git*
-            .github*
-            node_modules
-            .env
-          # 'delete: true' borra en el server lo que no existe en el repo (mantiene paridad total)
-          delete_remote_files: true
+          port: 21 # Hostinger usa el 21 para FTP normal o 22 para SFTP
+          local-dir: ./
+          server-dir: ./public_html/
+          # Aquí no se usa 'ignore', se usa 'exclude' en esta acción
+          exclude: |
+            **/.git*
+            **/.github*
+            **/node_modules/**
