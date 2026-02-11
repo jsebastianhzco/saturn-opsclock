@@ -20,6 +20,43 @@
     <?php
     include('../layout/sidebar.php');
     ?>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("token");
+    const userRaw = localStorage.getItem("user");
+
+    console.log("TOKEN:", token);
+    console.log("USER RAW:", userRaw);
+
+    if (userRaw) {
+        try {
+            const user = JSON.parse(userRaw);
+            console.log("USER PARSED:", user);
+        } catch (e) {
+            console.error("User JSON corrupted");
+        }
+    }
+
+
+
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("token");
+    const user = localStorage.getItem("user");
+
+    if (!token || !user) {
+        window.location.replace("login.php");
+        return;
+    }
+
+    // opcional: marcar sesión activa
+    console.log("Session OK");
+});
+</script>
 
     <div class="app-content">
         <!-- header -->
@@ -56,11 +93,14 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5>Welcome, {Johan S Hernandez}</h5>
+                                <h5 >Welcome, <span data-bind="employee.first_name"></span> <span data-bind="employee.last_name"></span></h5>
                             </div>
                             <div class="card-body">
-                                <form class="app-form">
-                                    <div class="row">
+                                <div id="active-shift-info" class="alert alert-info" style="display:none;">
+    </div>
+                                <div id="active-shift-info" class="mb-3" style="display:none;"></div>
+                                <form class="shifts-form">
+                                    <div class="row" id="shift-form-location">
                                         
                                         <div class="col-md-12 floating-select">
                                             <div class="mb-3">
@@ -76,41 +116,43 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="row">
+                                    <div class="row js-shift-date">
 
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label class="form-label">Check-in Date</label>
-                                                <input type="date" class="form-control" required>
+                                                <input type="date" class="form-control" id="shift-date" >
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
-                                            <div class="mb-3">
-                                                <label class="form-label">Clock In Time</label>
-                                                <input type="time" class="form-control" required>
-                                            </div>
-                                        </div>
+    
           
                                     </div>
                                     
 
-                                    <div class="row">
+                                    <div class="row js-clock-in" id="clock-in-section">
+
+                                        <div class="col-md-12">
+                                   <div class="mb-3">
+                                       <label class="form-label">Clock In Time</label>
+                                       <input type="time" class="form-control" id="shift-clock-in" >
+                                   </div>
+                               </div>
+                                    </div>
+
+                                    <div class="row js-clock-out">
 
                                         <div class="col-md-12">
                                             <div class="mb-3">
-                                                <label class="form-label">Check-Out Date</label>
-                                                <input type="date" class="form-control" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="mb-3">
                                                 <label class="form-label">Clock Out Time</label>
-                                                <input type="time" class="form-control" required>
+                                                <input type="time" class="form-control" >
                                             </div>
                                         </div>
-                                        <div class="col-12">
+
+                                    </div>
+                                    
+                                    <div class="row">
                                             <div class="text-end">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button class="btn btn-primary">Submit</button>
                                                 <button type="reset" class="btn btn-secondary">Reset</button>
                                             </div>
                                         </div>

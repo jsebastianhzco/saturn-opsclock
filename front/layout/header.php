@@ -12,7 +12,7 @@
 
                 <ul class="d-flex align-items-center">
 
-                    <li class="header-cloud">
+                    <li class="header-cloud" style="display:none">
                         <a aria-controls="cloudoffcanvasTops" class="head-icon"
                            data-bs-target="#cloudoffcanvasTops" data-bs-toggle="offcanvas"
                            href="#" role="button">
@@ -90,7 +90,7 @@
                         </div>
                     </li>
 
-                    <li class="header-language">
+                    <li class="header-language"  style="display:none">
                         <div class="flex-shrink-0 dropdown" id="lang_selector">
                             <a aria-expanded="false" class="d-block head-icon ps-0"
                                data-bs-toggle="dropdown"
@@ -138,7 +138,7 @@
 
                     </li>
 
-                    <li class="header-searchbar">
+                    <li class="header-searchbar"  style="display:none">
                         <a aria-controls="offcanvasRight" class="d-block head-icon"
                            data-bs-target="#offcanvasRight" data-bs-toggle="offcanvas"
                            href="#" role="button">
@@ -290,7 +290,7 @@
                         </div>
                     </li>
 
-                    <li class="header-apps">
+                    <li class="header-apps"  style="display:none">
                         <a aria-controls="appscanvasRights" class="d-block head-icon"
                            data-bs-target="#appscanvasRights" data-bs-toggle="offcanvas"
                            href="#" role="button">
@@ -471,7 +471,7 @@
                         </div>
                     </li>
 
-                    <li class="header-cart">
+                    <li class="header-cart" style="display:none">
                         <a aria-controls="cartcanvasRight" class="d-block head-icon position-relative"
                            data-bs-target="#cartcanvasRight"
                            data-bs-toggle="offcanvas"
@@ -630,7 +630,7 @@
                         </div>
                     </li>
 
-                    <li class="header-dark">
+                    <li class="header-dark" style="display:none">
                         <div class="sun-logo head-icon">
                             <i class="iconoir-sun-light"></i>
                         </div>
@@ -639,7 +639,7 @@
                         </div>
                     </li>
 
-                    <li class="header-notification">
+                    <li class="header-notification"  style="display:none">
                         <a aria-controls="notificationcanvasRight"
                            class="d-block head-icon position-relative"
                            data-bs-target="#notificationcanvasRight"
@@ -822,11 +822,11 @@
                                                     </span>
                                         </div>
                                         <div class="text-center mt-2">
-                                            <h6 class="mb-0"> Laura Monaldo <img
+                                            <h6 class="mb-0 text-center" > <span data-bind="employee.first_name"></span> <img
                                                         alt="instagram-check-mark"
                                                         class="w-20 h-20"
                                                         src="../assets/images/profile-app/01.png"></h6>
-                                            <p class="f-s-12 mb-0 text-secondary">lauradesign@gmail.com</p>
+                                            <p class="f-s-12 mb-0 text-secondary"><span data-bind="employee.hire_date"></span></p>
                                         </div>
                                     </li>
 
@@ -842,81 +842,24 @@
                                         </a>
                                     </li>
                                     <li class="app-divider-v dotted py-1"></li>
-                                    <li>
-                                        <div class="app-dropdown dropstart">
-                                            <a aria-expanded="false" class="f-w-500"
-                                               data-bs-toggle="dropdown"
-                                               href="./setting.php"
-                                               role="button" target="_blank">
-                                                <i class="iconoir-eye-closed pe-1 f-s-20"></i> Hide
-                                                Settings
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item">Hide Comments</a></li>
-                                                <li><a class="dropdown-item">Advanced comment filtering</a>
-                                                </li>
-                                                <li><a class="dropdown-item">Hide mssage request</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item">Separated link</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <a class="f-w-500" href="#">
-                                                <i class="iconoir-bell-notification pe-1 f-s-20"></i>
-                                                Notification
-                                            </a>
-                                            <div class="flex-shrink-0">
-                                                <div class="form-check form-switch">
-                                                    <input checked
-                                                           class="form-check-input form-check-primary"
-                                                           id="basicSwitch"
-                                                           type="checkbox">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <div>
-                                                <a class="f-w-500" href="#">
-                                                    <i class="ph-duotone  ph-detective pe-1 f-s-20"></i>
-                                                    Incognito
-                                                </a>
-                                            </div>
-                                            <div class="flex-shrink-0">
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input form-check-primary"
-                                                           id="incognitoSwitch"
-                                                           type="checkbox">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="app-divider-v dotted py-1"></li>
+
+
                                     <li>
                                         <a class="f-w-500" href="./faq.php" target="_blank">
                                             <i class="iconoir-help-circle pe-1 f-s-20"></i> Help
                                         </a>
                                     </li>
+
                                     <li>
-                                        <a class="f-w-500" href="./pricing.php" target="_blank">
-                                            <i class="iconoir-dollar pe-1 f-s-20"></i>
-                                            Pricing
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="mb-0 text-secondary f-w-500" href="./sign_up.php"
+                                        <a class="mb-0 text-secondary f-w-500" href="" style="display: none;"
                                            target="_blank">
                                             <i class="iconoir-plus pe-1 f-s-20"></i> Add account
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="mb-0 btn btn-light-danger btn-sm justify-content-center "
-                                           href="./sign_in.php"
+                                        <a class="mb-0 btn btn-light-danger btn-sm justify-content-center"
+                                        id="logout-btn"
+                                         
                                            role="button">
                                             <i class="ph-duotone  ph-sign-out pe-1 f-s-20"></i> Log Out
                                         </a>

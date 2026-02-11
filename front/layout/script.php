@@ -15,6 +15,9 @@
 
 <!-- App js-->
 <script src="../assets/js/script.js"></script>
+<script src="../assets/js/logout.js"></script>
+<script src="../assets/js/user-ui.js"></script>
+<script src="../assets/js/shifts-realtime.js"></script>
 
 <!-- Customizer js-->
 <script src="../assets/js/customizer.js"></script>

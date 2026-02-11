@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("token");
+    const user = localStorage.getItem("user");
 
+    if (token && user) {
+        window.location.replace("app.php");
+    }
+});
+</script>
 <head>
     <!-- css -->
     <?php
@@ -19,12 +28,12 @@
                     <div class="form-container ">
                         <div class="signup-content mt-4">
                 <span>
-                  <img alt="" class="img-fluid " src="../assets/images/logo/1.png">
+                  <img alt="" class="img-fluid " src="../assets/images/logo/">
                 </span>
                         </div>
 
                         <div class="signup-bg-img">
-                            <img alt="" class="img-fluid" src="../assets/images/login/01.png">
+                            <img alt="" class="img-fluid" src="../assets/images/login/">
                         </div>
                     </div>
 
@@ -41,8 +50,8 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="mb-3">
-                                        <label class="form-label" for="username">Username</label>
-                                        <input class="form-control" id="username" placeholder="Enter Your Username"
+                                        <label class="form-label" for="username">Enter your email</label>
+                                        <input class="form-control" id="username" placeholder="Enter Your Email"
                                                type="text">
                                     </div>
                                 </div>
@@ -90,7 +99,7 @@
 </body>
 
 <!-- Javascript -->
-<script src="assets/js/sign_in.js"></script>
+<script src="../assets/js/sign_in.js"></script>
 
 <!-- latest jquery-->
 <script src="../assets/js/jquery-3.6.3.min.js"></script>

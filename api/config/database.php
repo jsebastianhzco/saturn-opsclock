@@ -1,5 +1,17 @@
 <?php
 
+$host = 'db';      // o 'localhost' si no usas docker
+$db   = 'worktracker';
+$user = 'root';
+$pass = 'root';
+$dsn  = "mysql:host=$host;dbname=$db;charset=utf8mb4";
+
+$pdo = new PDO($dsn, $user, $pass, [
+  PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+]);
+
+
+/*
 require_once __DIR__ . '/env.php';
 
 $host = $_ENV['DB_HOST'] ?? null;
@@ -33,3 +45,4 @@ try {
     ]);
     exit;
 }
+*/
