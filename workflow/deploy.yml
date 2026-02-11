@@ -1,0 +1,40 @@
+name: CI/CD Pipeline - Production Deploy
+
+on:
+  push:
+    branches: [ main ] # Solo despliega cuando mergeas a main
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Trae todo el historial para un deploy más inteligente
+
+      # Opcional: Aquí podrías añadir pasos de Linter para evitar errores de JS
+      # - name: Check JS Syntax
+      #   run: npx eslint ./js/shifts-realtime.js
+
+      - name: Deploy via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          username: ${{ secrets.REMOTE_USER }}
+          server: ${{ secrets.REMOTE_HOST }}
+          port: ${{ secrets.REMOTE_PORT }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+          # Carpeta local que quieres subir
+          local_path: './*'
+          # Carpeta remota en Hostinger (ajusta según tu estructura)
+          remote_path: '/home/u143480887/domains/jsebastianhz.com/public_html/worktrack'
+          # Archivos a ignorar (importante para no borrar logs en el servidor)
+          ignore: |
+            .git*
+            .github*
+            node_modules
+            .env
+          # 'delete: true' borra en el server lo que no existe en el repo (mantiene paridad total)
+          delete_remote_files: true
